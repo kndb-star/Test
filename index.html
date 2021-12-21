@@ -17,7 +17,7 @@ function streamlog() {
   
 	var cards = document.getElementById("cards");
 
-	var cardHtml = '<div class="card" style="background-color: #343a40!important; min-width:300px; height:400px; overflow-y: scroll;"><div class="card-header" style="background: #343a40; color:white">Log</div><div class="card-body" style="background: #343a40; color: yellow"><p id="log"></p></div></div>'
+	var cardHtml = '<div class="card" style="background-color: #343a40!important; width:500px; height:300px; overflow-y: scroll;"><div class="card-header" style="background: #343a40; color:white">Log</div><div class="card-body" style="background: #343a40; color: yellow"><p id="log"></p></div></div>'
 
 	cards.insertAdjacentHTML("beforeend", cardHtml);
 
@@ -28,7 +28,7 @@ function streamlog() {
 		var element = document.getElementById('log');
 		if (element)
 		{
-			element.textContent += event.data;
+			element.textContent += "<br>" + event.data;
 		}
 	};
 }
@@ -37,7 +37,7 @@ function streamevent() {
   
 	var cards = document.getElementById("cards");
 
-	var cardHtml = '<div class="card" style="width:200px; height:300px;border:1px; background-color:gray;"><div class="card-header" style="color:white">Event Status</div><div class="card-body"><p id="status"></p></div></div>'
+	var cardHtml = '<div class="card" style="width:200px; height:300px;border:1px; background-color:#311b92;"><div class="card-header" style="color:white">Event Status</div><div class="card-body"><p id="status"></p></div></div>'
 
 	cards.insertAdjacentHTML("beforeend", cardHtml);
 
@@ -48,7 +48,7 @@ function streamevent() {
 		var element = document.getElementById('status');
 		if (element)
 		{
-			element.textContent += event.data;
+			element.textContent += "<br>" + event.data;
 		}
 	};
 }
