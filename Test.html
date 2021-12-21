@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>  
+
+<i class="fas fa-file-alt fa-2x" onclick="streamlog()"></i>
+<i class="fas fa-tasks fa-2x" onclick="streamevent()"></i>
+
+<div id="cards" class="card-columns">
+</div>
+
+<script>
+
+function streamlog() {
+  
+	var cards = document.getElementById("cards");
+
+	var cardHtml = '<div class="card" style="background-color: #343a40!important; min-width:300px; height:400px; overflow-y: scroll;"><div class="card-header" style="background: #343a40; color:white">Log</div><div class="card-body" style="background: #343a40; color: yellow"><p id="log"></p></div></div>'
+
+	cards.insertAdjacentHTML("beforeend", cardHtml);
+
+	var logSource = new EventSource('https://kd-playground-functionapp.azurewebsites.net/api/StreamLogs?code=MuFPYxFQhc1q7CaxM2X8e8PLoJGoJWpo/8QUWABctC1g7WCObi9cOQ==');
+
+	logSource.onmessage = function(event) 
+	{
+		var element = document.getElementById('log');
+		if (element)
+		{
+			element.textContent += event.data;
+		}
+	};
+}
+
+function streamevent() {
+  
+	var cards = document.getElementById("cards");
+
+	var cardHtml = '<div class="card" style="width:200px; height:300px;border:1px; background-color:gray;"><div class="card-header" style="color:white">Event Status</div><div class="card-body"><p id="status"></p></div></div>'
+
+	cards.insertAdjacentHTML("beforeend", cardHtml);
+
+	var logSource = new EventSource('https://kd-playground-functionapp.azurewebsites.net/api/HttpTrigger1?code=5C8YjKcM2D3Oj10iAq8F3BLHwnzkjNHMS24mac4tkG8pwxnP1ZGjzA==');
+
+	logSource.onmessage = function(event) 
+	{
+		var element = document.getElementById('status');
+		if (element)
+		{
+			element.textContent += event.data;
+		}
+	};
+}
+
+</script>
+</body>
+</html>
