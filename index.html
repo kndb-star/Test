@@ -28,7 +28,7 @@ function streamlog() {
 		var element = document.getElementById('log');
 		if (element)
 		{
-			element.textContent += "<br>" + event.data;
+			element.textContent += event.data + "\r\n";
 		}
 	};
 }
@@ -48,7 +48,7 @@ function streamevent() {
 		var element = document.getElementById('status');
 		if (element)
 		{
-			element.textContent += "<br>" + event.data;
+			element.textContent += event.data + "\r\n";
 		}
 	};
 }
